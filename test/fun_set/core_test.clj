@@ -18,6 +18,14 @@
     (is (= nil (f-set "test")))
     (is (= :success (f-set :success)))))
 
+(deftest f-contains-test
+  (let [f-set1 (singleton-set :success)
+        f-set2 (singleton-set false)]
+    (is (= true (f-contains? f-set1 :success)))
+    (is (= true (f-contains? f-set2 false)))
+    (is (= false (f-contains? f-set1 :fail)))
+    (is (= false (f-contains? f-set2 true)))))
+
 (deftest union-test
   (let [f-set1 (singleton-set :test1)
         f-set2 (singleton-set :test2)
