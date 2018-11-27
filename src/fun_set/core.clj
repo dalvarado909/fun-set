@@ -1,6 +1,6 @@
 (ns fun-set.core)
 
-;; A fun-set is a function that takes a non nil input elelment
+;; A fun-set is a function that takes a non nil input element
 ;; and returns that input element if and only if the fun-set
 ;; contains an element equal to that element else returns nil
 

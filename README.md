@@ -1,4 +1,4 @@
-# Funcation Set Koan
+# Function Set Koan
 
 This Koan ask you to implement a specail kind of set (_fun-set_) and some base
 functions for set manipulation. 
