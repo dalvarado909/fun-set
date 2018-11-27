@@ -88,12 +88,20 @@
 
 (deftest intersection-all-test
   (testing "base case"
-    (let [els (rand-elements 50)
-          f-set (->> els
-                     (map singleton-set)
-                     (apply intersection-all))
-          c-set (->> els
-                     (map #(do #{%}))
+    (let [els1 (rand-elements 100)
+          els2 (rand-elements 100)
+          els3 (rand-elements 100)
+          f-set (intersection-all (->> els1
+                                       (map singleton-set)
+                                       (apply union-all))
+                                  (->> els2
+                                       (map singleton-set)
+                                       (apply union-all))
+                                  (->> els3
+                                       (map singleton-set)
+                                       (apply union-all)))
+          c-set (->> [els1 els2 els3]
+                     (map #(into #{} %))
                      (apply set/intersection))]
       (doseq [el (range 100)]
         (is (= (f-set el) (c-set el))))))
