@@ -12,30 +12,30 @@ element equal to that element else the fun-set returns nil
 
 There are two base functions provide for you to start with
 
-* empty-set - is a fun-set that takes any input element and returns
+* __empty-set__ - is a fun-set that takes any input element and returns
   nil
-* singleton-set - if a function that takes and element and returns a
+* __singleton-set__ - if a function that takes and element and returns a
   fun-set containing that element
 
 ## Functions You Must Implement
 
 * __f-contains?__ - takes an fun set and el and returns true only if that
   elements exists in the fun set else false
-* union - takes two fun-sets and returns a set that is the superset
+* __union__ - takes two fun-sets and returns a set that is the superset
   of all elements in either set1 or set2
-* union-all - takes a list of fun sets and returns a fun set that is the
+* __union-all__ - takes a list of fun sets and returns a fun set that is the
   superset of all elements containes in any of sets provided
-* intersection - takes two fun sets and returns a set that contains only
+* __intersection__ - takes two fun sets and returns a set that contains only
   elements present in each of the two sets
-* intersection-all - takes a list of fun sets and returns a set that contains
+* __intersection-all__ - takes a list of fun sets and returns a set that contains
   only elements present in all of the sets provided
-* f-conj - takes a fun set and an element and returns a fun set
+* __f-conj__ - takes a fun set and an element and returns a fun set
   that contains all elements in the input set plus the
   element provided
-* f-disj - takes a fun set and an element and returns a fun set1
+* __f-disj__ - takes a fun set and an element and returns a fun set1
   that contains all elements in the inputs set minus the
   element provided
-* f-set - takes a vaiable number of  elements and creates a fun set
+* __f-set__ - takes a vaiable number of  elements and creates a fun set
   that contains all the elements provided
 
 ## Testing
@@ -46,9 +46,3 @@ implementations
 ```
 $> lein test
 ```
-
-## Submitting a Solutions
-
-Please create a branch with the following format
-solution.first_name.last-name and push your code to it.  This is the
-honor system so don't look at other branches until you finish your solution.
