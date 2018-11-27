@@ -27,14 +27,22 @@
     (is (= false (f-contains? f-set2 true)))))
 
 (deftest union-test
-  (let [f-set1 (singleton-set :test1)
-        f-set2 (singleton-set :test2)
-        u-set (union f-set1 f-set2)]
-    (is (= nil (u-set 1)))
-    (is (= nil (u-set false)))
-    (is (= nil (u-set "test")))
-    (is (= :test1 (u-set :test1)))
-    (is (= :test2 (u-set :test2)))))
+  (testing "base cases"
+    (let [f-set1 (singleton-set :test1)
+          f-set2 (singleton-set :test2)
+          u-set (union f-set1 f-set2)]
+      (is (= nil (u-set 1)))
+      (is (= nil (u-set false)))
+      (is (= nil (u-set "test")))
+      (is (= :test1 (u-set :test1)))
+      (is (= :test2 (u-set :test2)))))
+  (testing "true false sets"
+    (let [f-set1 (singleton-set false)
+          f-set2 (singleton-set true)
+          u-set1 (union f-set1 f-set2)
+          u-set2 (union f-set2 f-set1)]
+      (is (= false (u-set1 false)))
+      (is (= false (u-set2 false))))))
 
 (deftest union-all-test
   (let [els (rand-elements 50)
@@ -62,7 +70,21 @@
       (is (= nil (i-set false)))
       (is (= nil (i-set "test")))
       (is (= nil (i-set :test1)))
-      (is (= nil (i-set :test2))))))
+      (is (= nil (i-set :test2)))))
+  (testing "true false sets"
+    (let [f-set1 (singleton-set false)
+          f-set2 (singleton-set true)
+          i-set1 (intersection f-set1 f-set2)
+          i-set2 (intersection f-set2 f-set1)]
+      (is (= nil (i-set1 false)))
+      (is (= nil (i-set2 false))))
+    (let [f-set1 (singleton-set false)
+          f-set2 (singleton-set false)
+          i-set1 (intersection f-set1 f-set2)
+          i-set2 (intersection f-set2 f-set1)]
+      (is (= false (i-set1 false)))
+      (is (= false (i-set2 false))))))
+
 
 (deftest intersection-all-test
   (testing "base case"
