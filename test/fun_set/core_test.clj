@@ -68,7 +68,7 @@
       (doseq [el (range 100)]
         (is (= (f-set el) (c-set el))))))
   (testing "no args returns empty set"
-    (let [res (inetersection-all)]
+    (let [res (intersection-all)]
       (is (identical? res empty-set)))))
 
 (deftest f-conj-test
