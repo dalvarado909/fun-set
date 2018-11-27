@@ -46,3 +46,10 @@ implementations
 ```
 $> lein test
 ```
+
+## Submitting a Solutions
+
+Please create a branch with the following format
+solution.first_name.last-name and push your code to it.  This is the
+honor system so don't look at other branches until you finish your solution.
+
