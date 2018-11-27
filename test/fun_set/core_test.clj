@@ -57,15 +57,19 @@
       (is (= nil (i-set :test2))))))
 
 (deftest intersection-all-test
-  (let [els (rand-elements 50)
-        f-set (->> els
-                   (map singleton-set)
-                   (apply intersection-all))
-        c-set (->> els
-                   (map #(do #{%}))
-                   (apply set/intersection))]
-    (doseq [el (range 100)]
-      (is (= (f-set el) (c-set el))))))
+  (testing "base case"
+    (let [els (rand-elements 50)
+          f-set (->> els
+                     (map singleton-set)
+                     (apply intersection-all))
+          c-set (->> els
+                     (map #(do #{%}))
+                     (apply set/intersection))]
+      (doseq [el (range 100)]
+        (is (= (f-set el) (c-set el))))))
+  (testing "no args returns empty set"
+    (let [res (inetersection-all)]
+      (is (identical? res empty-set)))))
 
 (deftest f-conj-test
   (let [els (rand-elements 50)
