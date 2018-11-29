@@ -47,6 +47,11 @@ implementations
 $> lein test
 ```
 
+Running a single test:
+```
+lein test :only fun-set.core-test/TEST_NAME
+```
+
 ## Submitting a Solutions
 
 Please create a branch with the following format
