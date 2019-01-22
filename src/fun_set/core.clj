@@ -24,15 +24,15 @@
 
 
 (defn union
-  "takes two fun-sets and returns a set that is the superset
-   of all elements in either set1 or set2"
+  "takes two fun-sets and returns a set that is the set
+   of all elements in either set1 or set2."
   [f-set1 f-set2]
   ;;TODO
   )
 
 (defn union-all
   "takes a list of fun sets and returns a fun set that is the
-   superset of all elements containes in any of sets provided"
+   set of all elements in any of sets provided."
   [& f-sets]
   ;; TODO
   )
