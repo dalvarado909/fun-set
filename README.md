@@ -93,6 +93,14 @@ implementations
 $> lein test
 ```
 
+Running a single test:
+```
+    lein test :only fun-set.core-test/test-name
+```
+
+Replace `test-name` with the name of particular test, for example,
+`empty-set-test`.
+
 ## Submitting a Solutions
 
 Please create a branch with the following format
