@@ -19,38 +19,41 @@
   "takes an fun set and el and returns true only if that
    elements exists in the fun set else false"
   [f-set el]
-  ;;TODO
-  )
+  (some? (f-set el)))
 
 
 (defn union
   "takes two fun-sets and returns a set that is the set
    of all elements in either set1 or set2."
   [f-set1 f-set2]
-  ;;TODO
-  )
+  (fn [el]
+    (when (or (f-contains? f-set1 el)
+              (f-contains? f-set2 el))
+      el)))
 
 (defn union-all
   "takes a list of fun sets and returns a fun set that is the
    set of all elements in any of sets provided."
   [& f-sets]
-  ;; TODO
-  )
+  (reduce union f-sets))
 
 
 (defn intersection
   "takes two fun sets and returns a set that contains only
    elements present in each of the two sets"
   [f-set1 f-set2]
-  ;; TODO
-  )
+  (fn [el]
+    (when (and (f-contains? f-set1 el)
+               (f-contains? f-set2 el))
+      el)))
 
 (defn intersection-all
   "takes a list of fun sets and returns a set that contains
    only elements present in all of the sets provided"
   [& f-sets]
-  ;;TODO
-  )
+  (if (seq f-sets)
+    (reduce intersection f-sets)
+    empty-set))
 
 
 (defn f-conj
@@ -58,20 +61,24 @@
    that contains all elements in the input set plus the
    element provided"
   [f-set el]
-  ;; TODO
-  )
+  (fn [e]
+    (when (or (= e el) (f-contains? f-set e))
+      e)))
 
 (defn f-disj
   "takes a fun set and an element and returns a fun set1
    that contains all elements in the inputs set minus the
    element provided"
   [f-set el1]
-  ;; TODO
-  )
+  (fn [e]
+    (when (and (not= e el1) (f-contains? f-set e))
+      e)))
 
 (defn f-set
   "takes a vaiable number of  elements and creates a fun set
    that contains all the elements provided"
   [& els]
-  ;; TODO
-  )
+  (fn [e]
+    (if (some #(= e %) els)
+      e
+      nil)))
