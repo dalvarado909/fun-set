@@ -1,6 +1,6 @@
 # Function Set Koan
 
-This Koan ask you to implement a specail kind of set (_fun-set_) and some base
+This Koan ask you to implement a special kind of set (_fun-set_) and some base
 functions for set manipulation. 
 
 A fun-set is a function that takes a non nil input elelment and
