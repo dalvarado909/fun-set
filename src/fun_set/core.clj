@@ -19,40 +19,50 @@
   "takes an fun set and el and returns true only if that
    elements exists in the fun set else false"
   [f-set el]
-  ;;TODO
+  (not (nil? (f-set el)))
   )
-
 
 (defn union
   "takes two fun-sets and returns a set that is the set
    of all elements in either set1 or set2."
   [f-set1 f-set2]
-  ;;TODO
+  (fn [el] ;;<- returning new fun-set composed of f-set1 and f-set2
+    (when (or (f-contains? f-set1 el)
+              (f-contains? f-set2 el))
+      el))
   )
 
 (defn union-all
   "takes a list of fun sets and returns a fun set that is the
    set of all elements in any of sets provided."
   [& f-sets]
-  ;; TODO
+  (fn [el]
+    (when (some #(f-contains? % el) f-sets)
+      el))
   )
-
 
 (defn intersection
   "takes two fun sets and returns a set that contains only
    elements present in each of the two sets"
   [f-set1 f-set2]
-  ;; TODO
+  (fn [el] ;;<- returning new fun-set composed of f-set1 and f-set2
+    (when (and (f-contains? f-set1 el)
+              (f-contains? f-set2 el))
+      el))
   )
 
 (defn intersection-all
   "takes a list of fun sets and returns a set that contains
    only elements present in all of the sets provided"
-  [& f-sets]
-  ;;TODO
-  )
+  ([] empty-set)
+  ([& f-sets]
+  (fn [el]
+    (when (every? #(f-contains? % el) f-sets)
+      el))
+  ))
 
-
+; Tests fail for these last 3 functions. I ran out of time and was
+; unable to get f-conj to pass test.
 (defn f-conj
   "takes a fun set and an element and returns a fun set
    that contains all elements in the input set plus the

@@ -109,6 +109,8 @@
     (let [res (intersection-all)]
       (is (identical? res empty-set)))))
 
+; Tests fail for these last 3 functions. I ran out of time and was
+; unable to get f-conj to pass test.
 (deftest f-conj-test
   (let [els (rand-elements 50)
         f-set (reduce f-conj empty-set els)
