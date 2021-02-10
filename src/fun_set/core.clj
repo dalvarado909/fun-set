@@ -68,7 +68,15 @@
    that contains all elements in the input set plus the
    element provided"
   [f-set el]
-  ;; TODO
+  (fn [el2]
+    ; "input set plus element provided" means:
+    ; f-set fun-set contains the el2 number
+    ; OR el number "contains" the el2 number, which is just an equality check
+    ; In either case, return the el2 input
+    (when (or (f-contains? f-set el2)
+              (= el el2))
+      el2)
+    )
   )
 
 (defn f-disj
@@ -76,12 +84,20 @@
    that contains all elements in the inputs set minus the
    element provided"
   [f-set el1]
-  ;; TODO
+  (fn [el2]
+    ; similar to f-conj except that we want the intersection of A and not B
+    (when (and (f-contains? f-set el2)                      ; A
+              (not= el1 el2))                               ; B
+      el2)
+    )
   )
 
 (defn f-set
   "takes a vaiable number of  elements and creates a fun set
    that contains all the elements provided"
   [& els]
-  ;; TODO
+  (fn [el]
+    ; similar to union-all except that we do a simple equality check on numbers (like in f-conj) instead of f-contains?
+    (when (some #(= % el) els)
+      el))
   )
